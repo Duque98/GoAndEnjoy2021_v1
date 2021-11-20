@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/et_busq"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:padding="10dp"
+            android:hint="Introduce tu búsqueda..."
+            />
+
+        <Button
+            android:id="@+id/btn_busq"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#5AAC78"
+            android:background="@drawable/ic_buscar"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_container_main"
+        android:layout_width="match_parent"
+        android:layout_height="670dp"
+        android:layout_marginTop="60dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reciclador"
+            android:layout_width="match_parent"
+            android:layout_height="654dp"
+            android:background="#eeeeee"
+            android:padding="10dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
