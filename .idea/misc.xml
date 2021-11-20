@@ -3,8 +3,47 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable-v24/fav1.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable-v24/ic_atras.xml" value="0.1609375" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2546875" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable-v24/ic_localidad.xml" value="0.1609375" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable-v24/ic_location.xml" value="0.1609375" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable-v24/ic_monumentos.xml" value="0.1609375" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable-v24/ic_perfil_negro.xml" value="0.3828125" />
         <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/bg_color.xml" value="0.2703125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_buscar.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_crear.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_deseos.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_fav.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_home.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2546875" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_logo_background.xml" value="0.2546875" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_museo.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_parque.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_perfil.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/drawable/ic_rutas.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/activity_crear_perfil.xml" value="0.328804347826087" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/activity_detalle_lugar.xml" value="0.34057971014492755" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/activity_editar_perfil.xml" value="0.328804347826087" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/activity_horario.xml" value="0.4" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/activity_lugares.xml" value="0.35507246376811596" />
         <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/activity_main.xml" value="0.19746376811594202" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/app_bar_main.xml" value="0.21875" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/card_view.xml" value="0.302536231884058" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/card_view_2.xml" value="0.34057971014492755" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/content_main.xml" value="0.264" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/fragment_blank.xml" value="0.328804347826087" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/fragment_buscar.xml" value="0.21354166666666666" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/fragment_lugares.xml" value="0.328804347826087" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/fragment_lugares_favorito.xml" value="0.328804347826087" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/fragment_museos.xml" value="0.34057971014492755" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/fragment_ruta.xml" value="0.328804347826087" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/layout/nav_header_main.xml" value="0.264" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/menu/activity_main_drawer.xml" value="0.264" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/menu/lugares.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
+        <entry key="..\:/Users/josei/AndroidStudioProjects/GoAndEnjoy2021/app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.1609375" />
       </map>
     </option>
   </component>

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.unex.goenjoy">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.EditarPerfilActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.CrearPerfilActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.HorarioActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.DetalleLugarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.LugaresActivity"
+            android:exported="true" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
