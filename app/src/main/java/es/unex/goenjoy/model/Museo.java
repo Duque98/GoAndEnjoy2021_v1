@@ -6,28 +6,52 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /*
 Clase Museo para gestionar la entidad museo
  */
 @Entity(tableName = "museos")
 public class Museo {
     @NonNull
+    @SerializedName("id")
+    @Expose
     @PrimaryKey()
     private int id;
+    @SerializedName("title")
+    @Expose
     private String title;
+    @SerializedName("relation")
+    @Expose
     private String relation;
+    @SerializedName("locality")
+    @Expose
     private String localidad;
+    @SerializedName("postal-code")
+    @Expose
     private String postalCode;
+    @SerializedName("street-address")
+    @Expose
     private String streetAdress;
+    @SerializedName("latitude")
+    @Expose
     private Float latitude;
+    @SerializedName("longitude")
+    @Expose
     private Float longitude;
+    @SerializedName("organization-desc")
+    @Expose
     private String desc;
+    @SerializedName("accesibility")
+    @Expose
     private String accesibility;
+    @SerializedName("schedule")
+    @Expose
     private String schedule;
     private int fav;
     private int deseo;
     private int ruta;
-    private int tipo; //0-default 1-museo 2-parque
 
     @Ignore
     public Museo(){
@@ -45,11 +69,10 @@ public class Museo {
         this.fav = 0;
         this.deseo=0;
         this.ruta = 0;
-        this.tipo = 0;
     }
 
 
-    public Museo(int id, String title, String relation, String localidad, String postalCode, String streetAdress, Float latitude, Float longitude, String desc, String accesibility, String schedule, int fav, int deseo, int ruta, int tipo) {
+    public Museo(int id, String title, String relation, String localidad, String postalCode, String streetAdress, Float latitude, Float longitude, String desc, String accesibility, String schedule, int fav, int deseo, int ruta) {
         this.id = id;
         this.title = title;
         this.relation = relation;
@@ -64,12 +87,9 @@ public class Museo {
         this.fav = fav;
         this.deseo = deseo;
         this.ruta = ruta;
-        this.tipo = tipo;
     }
 
-    public int getTipo() {return tipo;}
 
-    public void setTipo(int tipo) {this.tipo = tipo;}
 
     public int getRuta() {return ruta;}
 

@@ -34,7 +34,7 @@ public class LugaresActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_listaLugaresfav, R.id.nav_listaLugaresdeseo,R.id.nav_rutas, R.id.nav_museo, R.id.nav_parque, R.id.nav_buscar)
+                R.id.nav_home, R.id.nav_listaLugaresfav, R.id.nav_listaLugaresdeseo,R.id.nav_rutas, R.id.nav_museo, R.id.nav_buscar)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

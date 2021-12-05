@@ -14,19 +14,16 @@ import java.util.List;
 @Dao
 public interface MuseoDao {
     @Query("SELECT * FROM museos")
-    List<Museo> getAll();
+    LiveData<List<Museo>> getAll();
 
-    @Query("SELECT * FROM museos WHERE tipo=1")
-    List<Museo> getAllMuseo();
-
-    @Query("SELECT * FROM museos WHERE tipo=2")
-    List<Museo> getAllParque();
+    @Query("SELECT * FROM museos")
+    LiveData<List<Museo>> getAllMuseo();
 
     @Query("SELECT * FROM museos WHERE ruta=1")
-    List<Museo> getAllRuta();
+    LiveData<List<Museo>> getAllRuta();
 
     @Query("SELECT * FROM museos WHERE fav=1")
-    List<Museo> getAllFav();
+    LiveData<List<Museo>> getAllFav();
 
     @Update
     public void update(Museo museo);
@@ -41,8 +38,11 @@ public interface MuseoDao {
     public Museo getMuseo(String titulo);
 
     @Query("SELECT * FROM museos WHERE deseo=1")
-    List<Museo> getAllDes();
+    LiveData<List<Museo>> getAllDes();
 
     @Delete
     public void delete(Museo museo);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    public void bulkInsert(List<Museo> museos);
 }

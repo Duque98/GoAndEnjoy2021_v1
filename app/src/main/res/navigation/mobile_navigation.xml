@@ -31,11 +31,6 @@
         android:label="Museos"
         tools:layout="@layout/fragment_museos" />
     <fragment
-        android:id="@+id/nav_parque"
-        android:name="es.unex.goenjoy.fragment.ParqueFragment"
-        android:label="Parques"
-        tools:layout="@layout/fragment_museos" />
-    <fragment
         android:id="@+id/nav_buscar"
         android:name="es.unex.goenjoy.fragment.BuscarFragment"
         android:label="Buscar"

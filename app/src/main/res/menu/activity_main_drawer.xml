@@ -15,17 +15,12 @@
             android:title="@string/menu_museos" />
 
         <item
-            android:id="@+id/nav_parque"
-            android:icon="@drawable/ic_parque"
-            android:title="@string/menu_parques" />
-
-        <item
             android:id="@+id/nav_listaLugaresfav"
-            android:icon="@drawable/ic_fav"
+            android:icon="@drawable/ic_deseos"
             android:title="@string/menu_fav"/>
         <item
             android:id="@+id/nav_listaLugaresdeseo"
-            android:icon="@drawable/ic_deseos"
+            android:icon="@drawable/ic_fav"
             android:title="@string/menu_deseos"/>
         <item
             android:id="@+id/nav_rutas"

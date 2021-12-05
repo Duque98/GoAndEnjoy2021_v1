@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +19,11 @@ import es.unex.goenjoy.R;
 import es.unex.goenjoy.activity.DetalleLugarActivity;
 import es.unex.goenjoy.adapter.MuseoAdapter;
 import es.unex.goenjoy.model.Museo;
+import es.unex.goenjoy.repository.AppContainer;
+import es.unex.goenjoy.repository.MyApplication;
 import es.unex.goenjoy.room.MuseoDao;
 import es.unex.goenjoy.room.MuseoDatabase;
+import es.unex.goenjoy.viewmodel.MuseosViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +49,7 @@ public class LugaresFavoritoFragment extends Fragment implements MuseoAdapter.On
     private Context context;
     private List<Museo> museosList = new ArrayList<>();
     private MuseoDao mMuseoDao;
+    private MuseosViewModel museosViewModel;
 
     public LugaresFavoritoFragment() {
 
@@ -68,6 +74,9 @@ public class LugaresFavoritoFragment extends Fragment implements MuseoAdapter.On
         recycler.setHasFixedSize(true);
         lManager = new LinearLayoutManager(getContext());
         recycler.setLayoutManager(lManager);
+
+        inicio();
+
         adapter = new MuseoAdapter(museosList);
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,17 +115,18 @@ public class LugaresFavoritoFragment extends Fragment implements MuseoAdapter.On
     @Override
     public void onStart() {
         super.onStart();
-        MuseoDatabase db = MuseoDatabase.getDatabase(context);
-        mMuseoDao = db.museoDao();
-        museosList = mMuseoDao.getAllFav();
-        mostrarDatos();
+    }
+    public void inicio(){
+        AppContainer appContainer = ((MyApplication) this.getActivity().getApplication()).appContainer;
+        museosViewModel = new ViewModelProvider(this, appContainer.museosFactory).get(MuseosViewModel.class);
+        museosViewModel.getAllMuseoFav().observe(getViewLifecycleOwner(), new Observer<List<Museo>>() {
+            @Override
+            public void onChanged(List<Museo> museos) {
+                adapter.load(museos);
+            }
+        });
     }
 
-    private void mostrarDatos(){
-        adapter.load(museosList);
-        recycler.setAdapter(adapter);
-        adapter.setOnItemClickListener(LugaresFavoritoFragment.this);
-    }
 
 
     @Override

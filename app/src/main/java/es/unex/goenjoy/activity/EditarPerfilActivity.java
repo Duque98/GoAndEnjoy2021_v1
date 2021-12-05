@@ -2,6 +2,9 @@ package es.unex.goenjoy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,13 +18,16 @@ import es.unex.goenjoy.R;
 import es.unex.goenjoy.fragment.MuseosFragment;
 import es.unex.goenjoy.model.Museo;
 import es.unex.goenjoy.model.Perfil;
+import es.unex.goenjoy.repository.AppContainer;
+import es.unex.goenjoy.repository.MyApplication;
 import es.unex.goenjoy.room.MuseoDatabase;
 import es.unex.goenjoy.room.PerfilDao;
+import es.unex.goenjoy.viewmodel.PerfilViewModel;
 
 import java.util.List;
 
 public class EditarPerfilActivity extends AppCompatActivity {
-
+    PerfilViewModel perfilViewModel;
     Button bModificar, bBorrar;
     EditText etNombreUsuario, etCorreo;
     ImageView bAtras;
@@ -37,6 +43,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
         etNombreUsuario = findViewById(R.id.etNombreUsuario);
         etCorreo = findViewById(R.id.etCorreo);
 
+        AppContainer appContainer = ((MyApplication)getApplication()).appContainer;
+        perfilViewModel = new ViewModelProvider(this, appContainer.perfilFactory).get(PerfilViewModel.class);
 
         bModificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,9 +53,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 String nombreUsuario = etNombreUsuario.getText().toString().trim();
                 String correo = etCorreo.getText().toString().trim();
                 Perfil p = new Perfil(1,nombreUsuario, correo);
-                MuseoDatabase db = MuseoDatabase.getDatabase(getBaseContext());
-                PerfilDao perfilDao = db.perfilDao();
-                perfilDao.insert(p);
+                perfilViewModel.insert(p);
                 startActivity(intent);
             }
         });
@@ -56,23 +62,26 @@ public class EditarPerfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditarPerfilActivity.this, LugaresActivity.class);
-                MuseoDatabase db = MuseoDatabase.getDatabase(getBaseContext());
-                PerfilDao perfilDao = db.perfilDao();
-                perfilDao.delete();
+                perfilViewModel.delete();
                 startActivity(intent);
             }
         });
-        MuseoDatabase db = MuseoDatabase.getDatabase(getBaseContext());
-        PerfilDao perfilDao = db.perfilDao();
-        List<Perfil> p = perfilDao.get();
-        if(p.isEmpty()){ // si no existe ningún perfil creado, nos lleva a crear uno.
-            Intent intent = new Intent(EditarPerfilActivity.this, CrearPerfilActivity.class);
-            startActivity(intent);
-            finish();
-        }else { // aquí se edita el perfil.
-            etNombreUsuario.setText(p.get(0).getNombre());
-            etCorreo.setText(p.get(0).getEmail());
-        }
+
+
+        LiveData<List<Perfil>> p = perfilViewModel.get();
+        perfilViewModel.get().observe(this, new Observer<List<Perfil>>() {
+            @Override
+            public void onChanged(List<Perfil> perfils) {
+                if(perfils.isEmpty()){ // si no existe ningún perfil creado, nos lleva a crear uno.
+                    Intent intent = new Intent(EditarPerfilActivity.this, CrearPerfilActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else { // aquí se edita el perfil.
+                    etNombreUsuario.setText(perfils.get(0).getNombre());
+                    etCorreo.setText(perfils.get(0).getEmail());
+                }
+            }
+        });
 
         bAtras = (ImageView) findViewById(R.id.bAtras);
         bAtras.setOnClickListener(new View.OnClickListener() {

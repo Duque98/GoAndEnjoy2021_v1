@@ -102,7 +102,6 @@ public class MuseosFragment extends Fragment implements MuseoAdapter.OnItemClick
                 detailIntent.putExtra(EXTRA_RUTA, clickedItem.getRuta());
                 detailIntent.putExtra(EXTRA_FAVORITO, clickedItem.getFav());
                 detailIntent.putExtra(EXTRA_DESEO, clickedItem.getDeseo());
-                detailIntent.putExtra(EXTRA_TIPO, clickedItem.getTipo());
                 startActivity(detailIntent);
             }
         });
@@ -119,9 +118,6 @@ public class MuseosFragment extends Fragment implements MuseoAdapter.OnItemClick
     @Override
     public void onStart() {
         super.onStart();
-        MuseoDatabase db = MuseoDatabase.getDatabase(context);
-        mMuseoDao = db.museoDao();
-        museosList = mMuseoDao.getAllMuseo();
         mostrarDatos();
     }
 

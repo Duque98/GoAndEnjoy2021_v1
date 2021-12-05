@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 public interface PerfilDao {
     @Query("SELECT * FROM perfil")
-    List<Perfil> get();
+    LiveData<List<Perfil>> get();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public void insert(Perfil perfil);

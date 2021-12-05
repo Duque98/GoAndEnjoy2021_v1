@@ -167,7 +167,6 @@ public class DetalleLugarActivity extends AppCompatActivity {
                 meterRuta();
             }
         });
-        tipo = intent.getIntExtra(EXTRA_TIPO,0);
 
         bComoLlegar = (Button) findViewById(R.id.btn_comoLlegar);
         bComoLlegar.setOnClickListener(new View.OnClickListener() {
@@ -223,7 +222,7 @@ public class DetalleLugarActivity extends AppCompatActivity {
             ruta = 0;
         }
         Museo museo = new Museo(id, title, relation, localidad, postalCode, streetAdress,
-                latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta,tipo);
+                latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta);
         mMuseoDao.update(museo);
     }
     private void meterFav() {
@@ -238,7 +237,7 @@ public class DetalleLugarActivity extends AppCompatActivity {
         }
         //Declaración de un museo para poder actualizar la base de datos
         Museo museo = new Museo(id, title, relation, localidad, postalCode, streetAdress,
-                latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta,tipo);
+                latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta);
         mMuseoDao.update(museo);
     }
 
@@ -256,7 +255,7 @@ public class DetalleLugarActivity extends AppCompatActivity {
         }
         //Creación de un nuevo museo para actualizarlo en la base de datos
         Museo museo = new Museo(id, title, relation, localidad, postalCode, streetAdress,
-                latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta,tipo);
+                latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta);
         mMuseoDao.update(museo);
     }
 }
