@@ -25,7 +25,6 @@ public class MuseosViewModel extends ViewModel {
         mAllMuseoRuta = mRepository.getAllRuta();
         mAllMuseoDes = mRepository.getAllDes();
     }
-
     public LiveData<List<Museo>> getAllLugares() { return mAllLugares; }
     public LiveData<List<Museo>> getAllMuseos(){ return mAllMuseo;}
     public LiveData<List<Museo>> getAllMuseoFav() {return mAllMuseoFav;}

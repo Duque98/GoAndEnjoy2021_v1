@@ -5,9 +5,13 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import es.unex.goenjoy.converter.AddressConverter;
 
 /*
 Clase Museo para gestionar la entidad museo
@@ -31,9 +35,10 @@ public class Museo {
     @SerializedName("postal-code")
     @Expose
     private String postalCode;
-    @SerializedName("street-address")
+    @SerializedName("address")
     @Expose
-    private String streetAdress;
+    @TypeConverters(AddressConverter.class)
+    private Address streetAdress;
     @SerializedName("latitude")
     @Expose
     private Float latitude;
@@ -60,7 +65,7 @@ public class Museo {
         this.relation = "";
         this.localidad = "";
         this.postalCode = "";
-        this.streetAdress = "";
+        this.streetAdress = null;
         this.latitude = 0.0f;
         this.longitude = 0.0f;
         this.desc = "";
@@ -72,7 +77,7 @@ public class Museo {
     }
 
 
-    public Museo(int id, String title, String relation, String localidad, String postalCode, String streetAdress, Float latitude, Float longitude, String desc, String accesibility, String schedule, int fav, int deseo, int ruta) {
+    public Museo(int id, String title, String relation, String localidad, String postalCode, Address streetAdress, Float latitude, Float longitude, String desc, String accesibility, String schedule, int fav, int deseo, int ruta) {
         this.id = id;
         this.title = title;
         this.relation = relation;
@@ -143,11 +148,11 @@ public class Museo {
         this.postalCode = postalCode;
     }
 
-    public String getStreetAdress() {
+    public Address getStreetAdress() {
         return streetAdress;
     }
 
-    public void setStreetAdress(String streetAdress) {
+    public void setStreetAdress(Address streetAdress) {
         this.streetAdress = streetAdress;
     }
 

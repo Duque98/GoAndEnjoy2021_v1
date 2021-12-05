@@ -15,6 +15,6 @@ public interface ApiInterfaz {
     String API_ROUTE_Museos = "201132-0-museos.json";
 
     @GET(API_ROUTE_Museos)
-    Call<List<Museo>> getMuseos();
+    Call<JsonObject> getMuseos();
 
 }

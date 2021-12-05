@@ -90,7 +90,7 @@ public class LugaresDeseoFragment extends Fragment implements MuseoAdapter.OnIte
                 detailIntent.putExtra(EXTRA_RELATION, clickedItem.getRelation());
                 detailIntent.putExtra(EXTRA_LOCALIDAD, clickedItem.getLocalidad());
                 detailIntent.putExtra(EXTRA_POSTALCODE, clickedItem.getPostalCode());
-                detailIntent.putExtra(EXTRA_STREETADRESS, clickedItem.getStreetAdress());
+                detailIntent.putExtra(EXTRA_STREETADRESS, clickedItem.getStreetAdress().toString());
                 detailIntent.putExtra(EXTRA_LATITUDE, clickedItem.getLatitude());
                 detailIntent.putExtra(EXTRA_LONGITUDE, clickedItem.getLongitude());
                 detailIntent.putExtra(EXTRA_DESC, clickedItem.getDesc());

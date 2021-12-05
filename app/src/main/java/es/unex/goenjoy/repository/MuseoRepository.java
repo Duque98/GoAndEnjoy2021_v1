@@ -44,11 +44,10 @@ public class MuseoRepository {
         this.mMuseoDao = mDao;
         this.mPerfilDao = pDao;
         this.mRepoNetworkDataSource = repoNetworkDataSource;
+        doFetch();
         LiveData<Museo[]>liveData = this.mRepoNetworkDataSource.getCurrentMuseos();
-       // mRepoNetworkDataSource.fetchMuseos();
         liveData.observeForever(newReposFromNetwork ->{
             mExecutors.diskIO().execute(() -> {
-                //mRepoNetworkDataSource.fetchMuseos();
                 //TODO - no entra
                 mMuseoDao.bulkInsert(Arrays.asList(newReposFromNetwork));
                 Log.d(LOG_TAG, "New values inserted in Room");
@@ -71,16 +70,21 @@ public class MuseoRepository {
         return sInstance;
     }
 
+    public void doFetch(){
+        Log.d(LOG_TAG, "Cargando de la api en repository");
+        AppExecutors.getInstance().diskIO().execute(()->{
+            mMuseoDao.deleteAll();
+            mRepoNetworkDataSource.fetchMuseos();
+        });
+    }
+
     public LiveData<List<Museo>> getAllLugares() {
         return mAllLugares;
     }
     public LiveData<List<Museo>> getAllMuseos() {return mAllMuseos;}
-
-
     public LiveData<List<Museo>> getAllDes() {
         return mAllMuseosDes;
     }
-
     public LiveData<List<Museo>> getAllRuta() {
         return mAllMuseosRuta;
     }

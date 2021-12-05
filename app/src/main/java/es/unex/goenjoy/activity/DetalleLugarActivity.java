@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import es.unex.goenjoy.adapter.MuseoAdapter;
+import es.unex.goenjoy.model.Address;
 import es.unex.goenjoy.model.Museo;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
@@ -221,7 +222,7 @@ public class DetalleLugarActivity extends AppCompatActivity {
             bRuta.setImageResource(R.drawable.ruta2);
             ruta = 0;
         }
-        Museo museo = new Museo(id, title, relation, localidad, postalCode, streetAdress,
+        Museo museo = new Museo(id, title, relation, localidad, postalCode, new Address(streetAdress),
                 latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta);
         mMuseoDao.update(museo);
     }
@@ -236,7 +237,7 @@ public class DetalleLugarActivity extends AppCompatActivity {
             fav=0; //Marcar como no favorito
         }
         //Declaración de un museo para poder actualizar la base de datos
-        Museo museo = new Museo(id, title, relation, localidad, postalCode, streetAdress,
+        Museo museo = new Museo(id, title, relation, localidad, postalCode, new Address(streetAdress),
                 latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta);
         mMuseoDao.update(museo);
     }
@@ -254,7 +255,7 @@ public class DetalleLugarActivity extends AppCompatActivity {
             deseo = 0; //Marcar un lugar como no deseado
         }
         //Creación de un nuevo museo para actualizarlo en la base de datos
-        Museo museo = new Museo(id, title, relation, localidad, postalCode, streetAdress,
+        Museo museo = new Museo(id, title, relation, localidad, postalCode, new Address(streetAdress),
                 latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta);
         mMuseoDao.update(museo);
     }
