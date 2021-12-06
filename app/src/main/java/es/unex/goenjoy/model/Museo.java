@@ -1,17 +1,17 @@
 package es.unex.goenjoy.model;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import es.unex.goenjoy.converter.AddressConverter;
+import es.unex.goenjoy.converter.LocationConverter;
+import es.unex.goenjoy.converter.OrganizationConverter;
 
 /*
 Clase Museo para gestionar la entidad museo
@@ -29,31 +29,18 @@ public class Museo {
     @SerializedName("relation")
     @Expose
     private String relation;
-    @SerializedName("locality")
-    @Expose
-    private String localidad;
-    @SerializedName("postal-code")
-    @Expose
-    private String postalCode;
     @SerializedName("address")
     @Expose
-    @TypeConverters(AddressConverter.class)
-    private Address streetAdress;
-    @SerializedName("latitude")
+    @TypeConverters({AddressConverter.class})
+    private Address address;
+    @SerializedName("location")
     @Expose
-    private Float latitude;
-    @SerializedName("longitude")
+    @TypeConverters({LocationConverter.class})
+    private Location location;
+    @SerializedName("organization")
     @Expose
-    private Float longitude;
-    @SerializedName("organization-desc")
-    @Expose
-    private String desc;
-    @SerializedName("accesibility")
-    @Expose
-    private String accesibility;
-    @SerializedName("schedule")
-    @Expose
-    private String schedule;
+    @TypeConverters({OrganizationConverter.class})
+    private Organization organization;
     private int fav;
     private int deseo;
     private int ruta;
@@ -63,32 +50,22 @@ public class Museo {
         this.id = 0;
         this.title = "";
         this.relation = "";
-        this.localidad = "";
-        this.postalCode = "";
-        this.streetAdress = null;
-        this.latitude = 0.0f;
-        this.longitude = 0.0f;
-        this.desc = "";
-        this.accesibility = "";
-        this.schedule = "";
+        this.address = null;
+        this.location = null;
+        this.organization = null;
         this.fav = 0;
         this.deseo=0;
         this.ruta = 0;
     }
 
 
-    public Museo(int id, String title, String relation, String localidad, String postalCode, Address streetAdress, Float latitude, Float longitude, String desc, String accesibility, String schedule, int fav, int deseo, int ruta) {
+    public Museo(int id, String title, String relation, Address address, Location location, Organization organization, int fav, int deseo, int ruta) {
         this.id = id;
         this.title = title;
         this.relation = relation;
-        this.localidad = localidad;
-        this.postalCode = postalCode;
-        this.streetAdress = streetAdress;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.desc = desc;
-        this.accesibility = accesibility;
-        this.schedule = schedule;
+        this.address = address;
+        this.location = location;
+        this.organization = organization;
         this.fav = fav;
         this.deseo = deseo;
         this.ruta = ruta;
@@ -132,67 +109,27 @@ public class Museo {
         this.relation = relation;
     }
 
-    public String getLocalidad() {
-        return localidad;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
-    public Address getStreetAdress() {
-        return streetAdress;
+    public Organization getOrganization() {
+        return organization;
     }
 
-    public void setStreetAdress(Address streetAdress) {
-        this.streetAdress = streetAdress;
-    }
-
-    public Float getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Float latitude) {
-        this.latitude = latitude;
-    }
-
-    public Float getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Float longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getAccesibility() {
-        return accesibility;
-    }
-
-    public void setAccesibility(String accesibility) {
-        this.accesibility = accesibility;
-    }
-
-    public String getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 }

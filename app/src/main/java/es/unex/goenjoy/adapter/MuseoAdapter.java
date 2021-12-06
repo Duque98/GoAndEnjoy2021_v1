@@ -83,8 +83,8 @@ public class MuseoAdapter extends RecyclerView.Adapter<MuseoAdapter.MuseoViewHol
     @Override
     public void onBindViewHolder(@NonNull MuseoAdapter.MuseoViewHolder viewholder, int i) {
         viewholder.nombre.setText(items.get(i).getTitle());
-        viewholder.direccion.setText(items.get(i).getStreetAdress().getStreetAddress());
-        viewholder.horario.setText(items.get(i).getSchedule());
+        viewholder.direccion.setText(items.get(i).getAddress().getStreetAddress());
+        viewholder.horario.setText(items.get(i).getOrganization().getSchedule());
 
     }
 

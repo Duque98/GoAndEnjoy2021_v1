@@ -48,7 +48,6 @@ public class MuseoRepository {
         LiveData<Museo[]>liveData = this.mRepoNetworkDataSource.getCurrentMuseos();
         liveData.observeForever(newReposFromNetwork ->{
             mExecutors.diskIO().execute(() -> {
-                //TODO - no entra
                 mMuseoDao.bulkInsert(Arrays.asList(newReposFromNetwork));
                 Log.d(LOG_TAG, "New values inserted in Room");
             });

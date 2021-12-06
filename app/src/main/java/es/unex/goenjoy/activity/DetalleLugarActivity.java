@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import es.unex.goenjoy.adapter.MuseoAdapter;
 import es.unex.goenjoy.model.Address;
+import es.unex.goenjoy.model.Location;
 import es.unex.goenjoy.model.Museo;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import es.unex.goenjoy.R;
+import es.unex.goenjoy.model.Organization;
 import es.unex.goenjoy.room.MuseoDao;
 import es.unex.goenjoy.room.MuseoDatabase;
 
@@ -222,8 +224,11 @@ public class DetalleLugarActivity extends AppCompatActivity {
             bRuta.setImageResource(R.drawable.ruta2);
             ruta = 0;
         }
-        Museo museo = new Museo(id, title, relation, localidad, postalCode, new Address(streetAdress),
-                latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta);
+        Address address = new Address(localidad, postalCode, streetAdress);
+        Location location = new Location(latitude, longitude);
+        Organization organization = new Organization(desc, accesibility, schedule);
+        Museo museo = new Museo(id, title, relation, address,
+                location, organization, fav, deseo, ruta);
         mMuseoDao.update(museo);
     }
     private void meterFav() {
@@ -237,8 +242,11 @@ public class DetalleLugarActivity extends AppCompatActivity {
             fav=0; //Marcar como no favorito
         }
         //Declaración de un museo para poder actualizar la base de datos
-        Museo museo = new Museo(id, title, relation, localidad, postalCode, new Address(streetAdress),
-                latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta);
+        Address address = new Address(localidad, postalCode, streetAdress);
+        Location location = new Location(latitude, longitude);
+        Organization organization = new Organization(desc, accesibility, schedule);
+        Museo museo = new Museo(id, title, relation, address,
+                location, organization, fav, deseo, ruta);
         mMuseoDao.update(museo);
     }
 
@@ -254,9 +262,12 @@ public class DetalleLugarActivity extends AppCompatActivity {
             bDeseo.setImageResource(R.drawable.des1);
             deseo = 0; //Marcar un lugar como no deseado
         }
+        Address address = new Address(localidad, postalCode, streetAdress);
+        Location location = new Location(latitude, longitude);
+        Organization organization = new Organization(desc, accesibility, schedule);
         //Creación de un nuevo museo para actualizarlo en la base de datos
-        Museo museo = new Museo(id, title, relation, localidad, postalCode, new Address(streetAdress),
-                latitude, longitude, desc, accesibility, schedule, fav, deseo, ruta);
+        Museo museo = new Museo(id, title, relation, address,
+                location, organization, fav, deseo, ruta);
         mMuseoDao.update(museo);
     }
 }
