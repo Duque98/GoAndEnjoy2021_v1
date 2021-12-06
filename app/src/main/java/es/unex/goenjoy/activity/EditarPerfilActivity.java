@@ -68,7 +68,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         });
 
 
-        LiveData<List<Perfil>> p = perfilViewModel.get();
+        //LiveData<List<Perfil>> p = perfilViewModel.get();
         perfilViewModel.get().observe(this, new Observer<List<Perfil>>() {
             @Override
             public void onChanged(List<Perfil> perfils) {

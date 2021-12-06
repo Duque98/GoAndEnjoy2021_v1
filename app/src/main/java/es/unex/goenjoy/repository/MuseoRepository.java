@@ -72,7 +72,7 @@ public class MuseoRepository {
     public void doFetch(){
         Log.d(LOG_TAG, "Cargando de la api en repository");
         AppExecutors.getInstance().diskIO().execute(()->{
-            mMuseoDao.deleteAll();
+            //mMuseoDao.deleteAll();
             mRepoNetworkDataSource.fetchMuseos();
         });
     }
@@ -90,6 +90,7 @@ public class MuseoRepository {
     public LiveData<List<Museo>> getAllFav() {
         return mAllMuseosFav;
     }
+
     public LiveData<List<Perfil>> getAllProfile() {
         return mPerfil;
     }

@@ -1,9 +1,26 @@
 package es.unex.goenjoy.fragment;
 
+import static es.unex.goenjoy.utils.Constantes.EXTRA_ACCESIBILITY;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_DESC;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_DESEO;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_FAVORITO;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_ID;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_LATITUDE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_LOCALIDAD;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_LONGITUDE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_POSTALCODE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_RELATION;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_RUTA;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_SCHEDULE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_STREETADRESS;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_TITLE;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
@@ -22,35 +39,23 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.unex.goenjoy.repository.AppContainer;
+import es.unex.goenjoy.repository.MyApplication;
 import es.unex.goenjoy.room.MuseoDao;
 import es.unex.goenjoy.room.MuseoDatabase;
+import es.unex.goenjoy.viewmodel.MuseosViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MuseosFragment extends Fragment implements MuseoAdapter.OnItemClickListener {
-    public static final String EXTRA_ID = "id";
-    public static final String EXTRA_TITLE = "title";
-    public static final String EXTRA_RELATION = "relation";
-    public static final String EXTRA_LOCALIDAD = "localidad";
-    public static final String EXTRA_POSTALCODE = "postalCode";
-    public static final String EXTRA_STREETADRESS = "streetAdrres";
-    public static final String EXTRA_LATITUDE = "latitude";
-    public static final String EXTRA_LONGITUDE = "longitude";
-    public static final String EXTRA_DESC = "desc";
-    public static final String EXTRA_ACCESIBILITY = "accesibility";
-    public static final String EXTRA_SCHEDULE = "schedule";
-    public static final String EXTRA_RUTA = "ruta";
-    public static final String EXTRA_FAVORITO = "favorito";
-    public static final String EXTRA_DESEO = "deseo";
-    public static final String EXTRA_TIPO = "tipo";
 
     private RecyclerView recycler;
     private MuseoAdapter adapter;
     private RecyclerView.LayoutManager lManager;
     private Context context;
     private List<Museo> museosList = new ArrayList<>();
-    private MuseoDao mMuseoDao;
+    MuseosViewModel museosViewModel;
 
 
     public MuseosFragment() {
@@ -80,6 +85,9 @@ public class MuseosFragment extends Fragment implements MuseoAdapter.OnItemClick
         // Usar un administrador para LinearLayout
         lManager = new LinearLayoutManager(getContext());
         recycler.setLayoutManager(lManager);
+
+        mostrarDatos();
+
         // Crear un nuevo adaptador
         adapter = new MuseoAdapter(museosList);
         adapter.setOnClickListener(new View.OnClickListener() {
@@ -118,15 +126,19 @@ public class MuseosFragment extends Fragment implements MuseoAdapter.OnItemClick
     @Override
     public void onStart() {
         super.onStart();
-        mostrarDatos();
     }
 
 
 
     private void mostrarDatos(){
-        adapter.load(museosList);
-        recycler.setAdapter(adapter);
-        adapter.setOnItemClickListener(MuseosFragment.this);
+        AppContainer appContainer = ((MyApplication) this.getActivity().getApplication()).appContainer;
+        museosViewModel = new ViewModelProvider(this, appContainer.museosFactory).get(MuseosViewModel.class);
+        museosViewModel.getAllMuseos().observe(getViewLifecycleOwner(), new Observer<List<Museo>>() {
+            @Override
+            public void onChanged(List<Museo> museos) {
+                adapter.load(museos);
+            }
+        });
     }
 
     @Override

@@ -43,6 +43,6 @@ public interface MuseoDao {
     @Delete
     public void delete(Museo museo);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     public void bulkInsert(List<Museo> museos);
 }

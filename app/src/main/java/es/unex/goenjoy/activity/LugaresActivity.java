@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -18,11 +20,15 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
 import es.unex.goenjoy.R;
+import es.unex.goenjoy.model.Perfil;
+import es.unex.goenjoy.viewmodel.PerfilViewModel;
 
 public class LugaresActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
-
+    private PerfilViewModel perfilViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

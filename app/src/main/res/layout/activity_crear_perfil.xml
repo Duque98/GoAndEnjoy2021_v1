@@ -136,8 +136,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:backgroundTint="#5AAC78"
-        android:textColor="#FFFFFF"
         android:padding="30dp"
         android:text="@string/crear"
+        android:textColor="#FFFFFF"
         android:textSize="40dp" />
 </RelativeLayout>

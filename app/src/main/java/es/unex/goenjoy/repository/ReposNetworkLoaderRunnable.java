@@ -36,7 +36,6 @@ public class ReposNetworkLoaderRunnable implements Runnable{
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterfaz service = retrofit.create(ApiInterfaz.class);
-       // Call<List<Museo>> callMuseo = null;
         service.getMuseos().enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
@@ -45,9 +44,8 @@ public class ReposNetworkLoaderRunnable implements Runnable{
                 Type listType = new TypeToken<List<Museo>>(){}.getType();
                 Gson gson = new Gson();
                 lMuseos = gson.fromJson(lMuseosArray.toString(), listType);
-
-                Log.d("@@",lMuseos.toString());
                 List<Museo> finalLMuseos = lMuseos;
+
                 AppExecutors.getInstance().mainThread().execute(() -> mOnReposLoadedListener.onReposLoaded(finalLMuseos));
             }
 
@@ -56,13 +54,5 @@ public class ReposNetworkLoaderRunnable implements Runnable{
                 t.printStackTrace();
             }
         });
-        /*try {
-            Response<List<Museo>> responseMuseo = callMuseo.execute();
-            List<Museo> reposMuseo = responseMuseo.body() == null ? new ArrayList<>() : responseMuseo.body();
-            AppExecutors.getInstance().mainThread().execute(() -> mOnReposLoadedListener.onReposLoaded(reposMuseo));
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }*/
     }
 }

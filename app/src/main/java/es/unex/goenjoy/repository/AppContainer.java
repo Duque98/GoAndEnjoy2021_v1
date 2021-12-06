@@ -2,10 +2,8 @@ package es.unex.goenjoy.repository;
 
 import android.content.Context;
 
-import es.unex.goenjoy.factory.DetallesFactory;
 import es.unex.goenjoy.factory.MuseosFactory;
 import es.unex.goenjoy.factory.PerfilFactory;
-import es.unex.goenjoy.model.Museo;
 import es.unex.goenjoy.room.MuseoDatabase;
 
 public class AppContainer {
@@ -14,7 +12,6 @@ public class AppContainer {
     public MuseoRepository repository;
     public MuseosFactory museosFactory;
     public PerfilFactory perfilFactory;
-    public DetallesFactory detallesFactory;
 
     public AppContainer(Context context){
         db = MuseoDatabase.getDatabase(context);
@@ -22,7 +19,6 @@ public class AppContainer {
         repository = MuseoRepository.getInstance(db.museoDao(),db.perfilDao(),networkDataSource);
         museosFactory = new MuseosFactory(repository);
         perfilFactory = new PerfilFactory(repository);
-        detallesFactory = new DetallesFactory(repository);
     }
 
 }

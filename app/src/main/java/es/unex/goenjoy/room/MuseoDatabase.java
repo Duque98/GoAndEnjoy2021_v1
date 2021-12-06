@@ -31,7 +31,6 @@ public abstract class MuseoDatabase extends RoomDatabase {
             synchronized (MuseoDatabase.class){
                 if(instance == null)
                     instance = Room.databaseBuilder(context.getApplicationContext(), MuseoDatabase.class, "museos.db")
-                            .allowMainThreadQueries()
                             .build();
             }
         }

@@ -21,21 +21,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#5AAC78">
+
                 <ImageView
                     android:id="@+id/bAtras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_atras"></ImageView>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
                     android:autoSizeTextType="uniform"
                     android:gravity="center"
                     android:shadowColor="#000000"
                     android:shadowDx="5"
                     android:shadowDy="5"
                     android:shadowRadius="5"
+                    android:text="@string/app_name"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
@@ -55,11 +57,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="#84FAB0"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="40dp">
+                android:layout_marginBottom="40dp"
+                android:background="#84FAB0"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,6 +80,8 @@
                     android:text="Horario"
                     android:textColor="@android:color/black"></TextView>
             </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

@@ -1,5 +1,22 @@
 package es.unex.goenjoy.activity;
 
+import static es.unex.goenjoy.utils.Constantes.EXTRA_ACCESIBILITY;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_DESC;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_DESEO;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_FAVORITO;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_ID;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_LATITUDE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_LOCALIDAD;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_LONGITUDE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_POSTALCODE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_RELATION;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_RELATION2;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_RUTA;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_SCHEDULE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_SCHEDULE2;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_STREETADRESS;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_TITLE;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +27,8 @@ import es.unex.goenjoy.model.Address;
 import es.unex.goenjoy.model.Location;
 import es.unex.goenjoy.model.Museo;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,30 +36,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import es.unex.goenjoy.R;
 import es.unex.goenjoy.model.Organization;
+import es.unex.goenjoy.repository.AppContainer;
+import es.unex.goenjoy.repository.MyApplication;
 import es.unex.goenjoy.room.MuseoDao;
 import es.unex.goenjoy.room.MuseoDatabase;
+import es.unex.goenjoy.viewmodel.MuseosViewModel;
+import es.unex.goenjoy.viewmodel.PerfilViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_ACCESIBILITY;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_DESC;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_ID;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_LATITUDE;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_LOCALIDAD;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_LONGITUDE;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_POSTALCODE;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_RELATION;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_SCHEDULE;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_STREETADRESS;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_TITLE;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_DESEO;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_RUTA;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_FAVORITO;
-import static es.unex.goenjoy.fragment.MuseosFragment.EXTRA_TIPO;
 
 public class DetalleLugarActivity extends AppCompatActivity {
-    public static final String EXTRA_SCHEDULE2 = "schedule";
-    public static final String EXTRA_RELATION2 = "relation";
+
     ImageView bRuta;
     ImageView bFav;
     ImageView bDeseo;
@@ -57,7 +64,7 @@ public class DetalleLugarActivity extends AppCompatActivity {
     Float longitude;
     private MuseoAdapter mMuseoAdaptador;
     private List<Museo> mMuseo;
-    private MuseoDao mMuseoDao;
+    private MuseosViewModel museosViewModel;
 
     @SuppressLint({"WrongViewCast", "ClickableViewAccessibility"})
     @Override
@@ -207,9 +214,6 @@ public class DetalleLugarActivity extends AppCompatActivity {
 
         mMuseo = new ArrayList<Museo>();
         mMuseoAdaptador = new MuseoAdapter(mMuseo);
-        //TODO - getContext problema al fav y tal
-        MuseoDatabase db = MuseoDatabase.getDatabase(this.getBaseContext());
-        mMuseoDao = db.museoDao();
     }
 
 
@@ -229,7 +233,10 @@ public class DetalleLugarActivity extends AppCompatActivity {
         Organization organization = new Organization(desc, accesibility, schedule);
         Museo museo = new Museo(id, title, relation, address,
                 location, organization, fav, deseo, ruta);
-        mMuseoDao.update(museo);
+
+        AppContainer appContainer = ((MyApplication)getApplication()).appContainer;
+        museosViewModel = new ViewModelProvider(this, appContainer.museosFactory).get(MuseosViewModel.class);
+        museosViewModel.update(museo);
     }
     private void meterFav() {
         if (fav == 0) { //si esta a 0, significa que está desmarcado como favorito.
@@ -247,7 +254,10 @@ public class DetalleLugarActivity extends AppCompatActivity {
         Organization organization = new Organization(desc, accesibility, schedule);
         Museo museo = new Museo(id, title, relation, address,
                 location, organization, fav, deseo, ruta);
-        mMuseoDao.update(museo);
+
+        AppContainer appContainer = ((MyApplication)getApplication()).appContainer;
+        museosViewModel = new ViewModelProvider(this, appContainer.museosFactory).get(MuseosViewModel.class);
+        museosViewModel.update(museo);
     }
 
     //Método necesario para poder introducir y sacar un lugar de deseados
@@ -268,6 +278,9 @@ public class DetalleLugarActivity extends AppCompatActivity {
         //Creación de un nuevo museo para actualizarlo en la base de datos
         Museo museo = new Museo(id, title, relation, address,
                 location, organization, fav, deseo, ruta);
-        mMuseoDao.update(museo);
+
+        AppContainer appContainer = ((MyApplication)getApplication()).appContainer;
+        museosViewModel = new ViewModelProvider(this, appContainer.museosFactory).get(MuseosViewModel.class);
+        museosViewModel.update(museo);
     }
 }

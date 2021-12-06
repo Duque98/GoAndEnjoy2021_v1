@@ -1,5 +1,20 @@
 package es.unex.goenjoy.fragment;
 
+import static es.unex.goenjoy.utils.Constantes.EXTRA_ACCESIBILITY;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_DESC;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_DESEO;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_FAVORITO;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_ID;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_LATITUDE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_LOCALIDAD;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_LONGITUDE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_POSTALCODE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_RELATION;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_RUTA;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_SCHEDULE;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_STREETADRESS;
+import static es.unex.goenjoy.utils.Constantes.EXTRA_TITLE;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,20 +61,7 @@ import retrofit2.Response;
  */
 public class HomeFragment extends Fragment implements MuseoAdapter.OnItemClickListener {
 
-    public static final String EXTRA_ID = "id";
-    public static final String EXTRA_TITLE = "title";
-    public static final String EXTRA_RELATION = "relation";
-    public static final String EXTRA_LOCALIDAD = "localidad";
-    public static final String EXTRA_POSTALCODE = "postalCode";
-    public static final String EXTRA_STREETADRESS = "streetAdrres";
-    public static final String EXTRA_LATITUDE = "latitude";
-    public static final String EXTRA_LONGITUDE = "longitude";
-    public static final String EXTRA_DESC = "desc";
-    public static final String EXTRA_ACCESIBILITY = "accesibility";
-    public static final String EXTRA_SCHEDULE = "schedule";
-    public static final String EXTRA_RUTA = "ruta";
-    public static final String EXTRA_FAVORITO = "favorito";
-    public static final String EXTRA_DESEO = "deseo";
+
 
     private Context context;
     private RecyclerView recycler;
@@ -131,8 +133,6 @@ public class HomeFragment extends Fragment implements MuseoAdapter.OnItemClickLi
         });
         recycler.setAdapter(adapter);
         //adapter.setOnItemClickListener(HomeFragment.this);
-        //TODO -  meter actualizacion
-        Toast.makeText(getContext(), "Cargando los datos desde la API", Toast.LENGTH_LONG).show();
     }
 
 
