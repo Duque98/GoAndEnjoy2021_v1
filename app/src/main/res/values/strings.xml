@@ -46,12 +46,11 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="Eliminar">Borrar usuario</string>
     <string name="fraseEliminar">Pulsa aquí si deseas borrar tu usuario</string>
-    <string name="enviar">Modificar</string>
-    <string name="CAMBIAR">EDITAR PERFIL</string>
+    <string name="enviar">Crear</string>
+    <string name="CAMBIAR">MI PERFIL</string>
     <string name="frase6">Introduce los nuevos valores para editar su perfil</string>
     <string name="menu_buscar">Buscar</string>
     <string name="iniciar"> Iniciar sesion </string>
     <string name="login">Login</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

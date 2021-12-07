@@ -3,32 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
-            android:title="@string/menu_home"/>
+    <item android:title="General">
+        <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_home"
+                android:title="@string/menu_home"/>
+            </group>
+        </menu>
+    </item>
 
-        <item
-            android:id="@+id/nav_museo"
-            android:icon="@drawable/ic_museo"
-            android:title="@string/menu_museos" />
+    <item android:title="Sitios">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_museo"
+                    android:icon="@drawable/ic_museo"
+                    android:title="@string/menu_museos" />
+            </group>
+        </menu>
+    </item>
 
-        <item
-            android:id="@+id/nav_listaLugaresfav"
-            android:icon="@drawable/ic_deseos"
-            android:title="@string/menu_fav"/>
-        <item
-            android:id="@+id/nav_listaLugaresdeseo"
-            android:icon="@drawable/ic_fav"
-            android:title="@string/menu_deseos"/>
-        <item
-            android:id="@+id/nav_rutas"
-            android:icon="@drawable/ic_rutas"
-            android:title="@string/menu_ruta"/>
-        <item
-            android:id="@+id/nav_buscar"
-            android:icon="@drawable/ic_buscar"
-            android:title="@string/menu_buscar"/>
-    </group>
+    <item android:title="Mis categorias">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_listaLugaresfav"
+                    android:icon="@drawable/ic_deseos"
+                    android:title="@string/menu_fav"/>
+                <item
+                    android:id="@+id/nav_listaLugaresdeseo"
+                    android:icon="@drawable/ic_fav"
+                    android:title="@string/menu_deseos"/>
+                <item
+                    android:id="@+id/nav_rutas"
+                    android:icon="@drawable/ic_rutas"
+                    android:title="@string/menu_ruta"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Otros">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_buscar"
+                    android:icon="@drawable/ic_buscar"
+                    android:title="@string/menu_buscar"/>
+                <item
+                    android:id="@+id/nav_perfil"
+                    android:icon="@drawable/ic_perfil_negro"
+                    android:title="Mi perfil"/>
+            </group>
+        </menu>
+    </item>
+
 </menu>

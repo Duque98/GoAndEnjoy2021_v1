@@ -1,11 +1,12 @@
 package es.unex.goenjoy.activity;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,15 +21,11 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.List;
 
 import es.unex.goenjoy.R;
-import es.unex.goenjoy.model.Perfil;
-import es.unex.goenjoy.viewmodel.PerfilViewModel;
 
 public class LugaresActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
-    private PerfilViewModel perfilViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +37,7 @@ public class LugaresActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_listaLugaresfav, R.id.nav_listaLugaresdeseo,R.id.nav_rutas, R.id.nav_museo, R.id.nav_buscar)
+                R.id.nav_home, R.id.nav_listaLugaresfav, R.id.nav_listaLugaresdeseo,R.id.nav_rutas, R.id.nav_museo, R.id.nav_buscar, R.id.nav_perfil)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -69,12 +66,6 @@ public class LugaresActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.perfil:
-                Intent intent = new Intent(LugaresActivity.this, EditarPerfilActivity.class);
-                startActivity(intent);
-                return true;
-            //case R.id.settings:
-            //    return true;
             default:
                 return super.onOptionsItemSelected(item);
 

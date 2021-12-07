@@ -35,5 +35,10 @@
         android:name="es.unex.goenjoy.fragment.BuscarFragment"
         android:label="Buscar"
         tools:layout="@layout/fragment_buscar"/>
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="es.unex.goenjoy.fragment.EditarPerfilFragment"
+        android:label="Mi perfil"
+        tools:layout="@layout/fragment_editar_perfil" />
 
 </navigation>

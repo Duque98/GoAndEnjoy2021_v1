@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.EditarPerfilActivity"
-            android:exported="true" />
-        <activity
             android:name=".activity.CrearPerfilActivity"
             android:exported="true" />
         <activity
