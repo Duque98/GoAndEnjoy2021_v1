@@ -30,7 +30,11 @@ public class HorarioActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         schedule = intent.getStringExtra(EXTRA_SCHEDULE2);
         TextView textViewHorario = findViewById(R.id.tv_horario);
-        textViewHorario.setText(schedule);
+        if(schedule.length() <= 2){
+            textViewHorario.setText("No existe información del horario");
+        }else{
+            textViewHorario.setText(schedule);
+        }
 
         bLink = (Button) findViewById(R.id.btn_web);
         bLink.setOnClickListener(new View.OnClickListener() {

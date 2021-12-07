@@ -27,6 +27,7 @@ import es.unex.goenjoy.model.Address;
 import es.unex.goenjoy.model.Location;
 import es.unex.goenjoy.model.Museo;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.View;
