@@ -10,10 +10,9 @@ import es.unex.goenjoy.repository.MuseoRepository;
 
 public class PerfilViewModel extends ViewModel {
     private MuseoRepository mRepository;
-    LiveData<List<Perfil>> aux ;
+    private LiveData<List<Perfil>> aux ;
 
     public PerfilViewModel(MuseoRepository repository) {
-
         mRepository = repository;
         aux = mRepository.getAllProfile();
     }
