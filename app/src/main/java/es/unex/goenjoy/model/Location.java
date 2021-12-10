@@ -11,6 +11,11 @@ public class Location {
     @Expose
     private Float longitude;
 
+    public Location(){
+        this.latitude=0.0f;
+        this.longitude=0.0f;
+    }
+
     public Location(Float latitude, Float longitude){
         this.latitude = latitude;
         this.longitude = longitude;

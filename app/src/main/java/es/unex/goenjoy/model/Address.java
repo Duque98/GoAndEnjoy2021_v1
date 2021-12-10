@@ -20,6 +20,14 @@ public class Address {
     @Expose
     private String streetAddress;
 
+    public Address(){
+        this.district = null;
+        this.area = null;
+        this.locality = "";
+        this.postalCode = "";
+        this.streetAddress = "";
+    }
+
     public Address(String locality, String postalCode, String streetAddress){
         this.locality = locality;
         this.postalCode = postalCode;

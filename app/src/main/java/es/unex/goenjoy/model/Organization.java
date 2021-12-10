@@ -14,6 +14,12 @@ public class Organization {
     @Expose
     private String schedule;
 
+    public Organization (){
+        this.organizationDesc="";
+        this.accesibility="";
+        this.schedule="";
+    }
+
     public Organization(String organizationDesc, String accesibility, String schedule){
         this.organizationDesc = organizationDesc;
         this.accesibility = accesibility;
